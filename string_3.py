@@ -1,4 +1,3 @@
-#https://codingbat.com/java/String-3
 def countYZ(str1):
     return len(list(filter(lambda x: x[-1] in 'yz', [x for x in ''.join(map(lambda x: ' ' if not x.isalpha() else x, str1.lower())).split(' ') if x])))
 
@@ -74,6 +73,7 @@ def sumNumbers(my_string):
             nums.append(int(substr)) if substr else 0
             substr = ''
     return sum(nums + ([int(substr)] if substr else [0]))
+
 
 assert countYZ("fez day") == 2
 assert countYZ("day fez") == 2

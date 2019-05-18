@@ -1,4 +1,3 @@
-# https://codingbat.com/java/Array-3
 def maxSpan(nums):
     spans = []
     for num in set(nums):
