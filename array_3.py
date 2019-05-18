@@ -74,6 +74,7 @@ def countClumps(nums):
         clumps += (1 if count > 1 else 0)
     return clumps
 
+
 assert maxSpan([1, 2, 1, 1, 3]) == 4
 assert maxSpan([1, 4, 2, 1, 4, 1, 4]) == 6
 assert maxSpan([1, 4, 2, 1, 4, 4, 4]) == 6
