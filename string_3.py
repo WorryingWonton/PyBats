@@ -12,7 +12,7 @@ def notReplace(str1):
     idx = 0
     while idx < len(str1) - 1:
         if str1[idx:idx + 2] == 'is' and (len(str1) == 2 or (((idx == 0 and not str1[idx + 2].isalpha()) or (idx == len(str1) - 2 and not str1[idx - 1].isalpha())) or (not str1[idx - 1].isalpha() and not str1[idx + 2].isalpha()))):
-            str1 = str1[0:idx + 2] + ' not' + str1[idx + 2:]
+            str1 = str1[:idx + 2] + ' not' + str1[idx + 2:]
             idx += 6
         else:
             idx += 1
@@ -40,7 +40,7 @@ def sumDigits(my_string):
     return sum(map(lambda x: int(x), filter(lambda x: x.isdigit(), my_string)))
 
 def sameEnds(my_string):
-    lh = my_string[0:int(len(my_string) / 2)]
+    lh = my_string[:int(len(my_string) / 2)]
     rh = my_string[int(len(my_string) / 2) + len(my_string) % 2:len(my_string)]
     new_s = ''
     while rh:

@@ -39,10 +39,10 @@ def linearIn(inner, outer):
     return not linearIn_helper(inner, outer)
 
 def linearIn_helper(inner, outer):
-    return (linearIn_helper(inner[1:], outer[0:]) if inner[0] != outer[0] else linearIn_helper(inner[1:], outer[1:])) if inner and outer else outer
+    return (linearIn_helper(inner[1:], outer) if inner[0] != outer[0] else linearIn_helper(inner[1:], outer[1:])) if inner and outer else outer
 
 def squareUp(num):
-    return sum([y[0:num - x] + list(range(x, 0, -1)) for x, y in enumerate([[0]*num]*num, start=1)], [])
+    return sum([y[:num - x] + list(range(x, 0, -1)) for x, y in enumerate([[0]*num]*num, start=1)], [])
 
 def seriesUp(num):
     return sum([list(range(1, x[0] + 2)) for x in enumerate([[]]*num)], [])
