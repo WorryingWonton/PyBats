@@ -41,9 +41,9 @@ def mapAB2(map):
     return map
 
 def mapAB3(map):
-    if 'a' in map.keys() and not 'b' in map.keys():
+    if 'a' in map.keys() and 'b' not in map.keys():
         map['b'] = map['a']
-    elif 'b' in map.keys() and not 'a' in map.keys():
+    elif 'b' in map.keys() and 'a' not in map.keys():
         map['a'] = map['b']
     return map
 
