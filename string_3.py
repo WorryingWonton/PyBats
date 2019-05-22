@@ -41,7 +41,7 @@ def sumDigits(my_string):
 
 def sameEnds(my_string):
     lh = my_string[:int(len(my_string) / 2)]
-    rh = my_string[int(len(my_string) / 2) + len(my_string) % 2:len(my_string)]
+    rh = my_string[int(len(my_string) / 2) + len(my_string) % 2:]
     new_s = ''
     while rh:
         if lh[0] != rh[0]:
