@@ -27,12 +27,10 @@ def xyBalance(str):
 
 def mixString(a, b):
     new_str = ''
-    index = 0
-    while index < len(a):
-        new_str += a[index]
-        new_str += b[index] if index < len(b) else ''
-        index += 1
-    return new_str + b[index:]
+    min_len = min(len(a), len(b))
+    for index in range(min_len):
+        new_str += a[index] + b[index]
+    return new_str + b[min_len:] + a[min_len:]
 
 def repeatEnd(str, n):
     return n * str[-n:]
@@ -52,12 +50,8 @@ def xyzMiddle(str):
         return 'xyz' in str[center_index - 2:center_index + 3]
     return str[center_index - 1:center_index + 2] == 'xyz'
 
-def getSandwich(my_string):
-    if 'bread' in my_string:
-        l_idx = my_string.index('bread')
-        r_idx = len(my_string) - my_string[::-1].index('daerb')
-        return my_string[l_idx + 5:r_idx - 5]
-    return ''
+def getSandwich(str):
+    return str[str.index('bread') + 5:len(str) - str[::-1].index('daerb') - 5] if len(str) > 9 else ''
 
 def sameStarChar(str):
     for idx in range(1, len(str) - 1):
