@@ -45,10 +45,7 @@ def prefixAgain(str, n):
     return str[:n] in str[n:]
 
 def xyzMiddle(str):
-    center_index = int(len(str) / 2)
-    if not len(str) % 2:
-        return 'xyz' in str[center_index - 2:center_index + 3]
-    return str[center_index - 1:center_index + 2] == 'xyz'
+    return 'xyz' in str[int(len(str) / 2) - 2 + len(str) % 2:int(len(str) / 2) + 3 - len(str) % 2]
 
 def getSandwich(str):
     return str[str.index('bread') + 5:len(str) - str[::-1].index('daerb') - 5] if len(str) > 9 else ''
