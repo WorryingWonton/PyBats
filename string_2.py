@@ -8,7 +8,7 @@ def cat_dog(str):
     return len(str.split('cat')) == len(str.split('dog'))
 
 def count_code(str):
-    return len([x for idx, x in enumerate(str) if (idx < len(str) - 3 and (x == 'c' and str[idx + 1] == 'o' and str[idx + 3] == 'e'))])
+    return len([x for idx, x in enumerate(str) if (idx < len(str) - 3 and x + str[idx + 1] + str[idx + 3] == 'coe')])
 
 def end_other(a, b):
     return a[len(a) - len(b):].lower() == b.lower() or b[len(b) - len(a):].lower() == a.lower()
