@@ -61,9 +61,8 @@ def sameStarChar(str):
 
 def oneTwo(str):
     new_str = ''
-    while len(str) > 2:
-        new_str += str[1:3] + str[0]
-        str = str[3:]
+    for idx in range(0, len(str) - 2, 3):
+        new_str += str[idx + 1:idx + 3] + str[idx]
     return new_str
 
 def zipZap(str):
