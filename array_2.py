@@ -107,7 +107,7 @@ def twoTwo(nums):
     return True
 
 def sameEnds(nums, length):
-    return nums[0:length] == nums[len(nums) - length:]
+    return nums[:length] == nums[len(nums) - length:]
 
 def tripleUp(nums):
     for idx in range(len(nums) - 2):
@@ -130,7 +130,7 @@ def tenRun(nums):
     return nums
 
 def pre4(nums):
-    return nums[0:nums.index(4)]
+    return nums[:nums.index(4)]
 
 def post4(nums):
     if 4 not in nums:
