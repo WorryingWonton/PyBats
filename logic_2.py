@@ -25,6 +25,15 @@ def close_far(a, b, c):
     c = abs(c)
     return (abs(a - b) <= 1 and (abs(a - c) >= 2 and abs(b - c) >= 2)) or ((abs(a - b) >= 2 and abs(b - c) >= 2) and abs(a - c) <= 1)
 
+def blackjack(a, b):
+    return min(a if a < 22 else 0, b if b < 22 else 0, key=lambda x: 21 - x)
+
+def evenlySpaced(a, b, c):
+    lowest = min(a, b, c)
+    highest = max(a, b, c)
+    middle = (lowest + highest) / 2
+    return highest - middle == middle - lowest and middle in (a, b, c)
+
 def make_chocolate(small, big, goal):
     return (goal - 5 * big if 5 * big <= goal else goal % 5) if (goal % 5 <= small and goal - 5 * big <= small) else -1
 
@@ -131,6 +140,37 @@ assert close_far(10, 8, 9) == False
 assert close_far(8, 9, 10) == False
 assert close_far(8, 9, 7) == False
 assert close_far(8, 6, 9) == True
+
+assert blackjack(19, 21) == 21
+assert blackjack(21, 19) == 21
+assert blackjack(19, 22) == 19
+assert blackjack(22, 19) == 19
+assert blackjack(22, 50) == 0
+assert blackjack(22, 22) == 0
+assert blackjack(33, 1) == 1
+assert blackjack(1, 2) == 2
+assert blackjack(34, 33) == 0
+assert blackjack(17, 19) == 19
+assert blackjack(18, 17) == 18
+assert blackjack(16, 23) == 16
+assert blackjack(3, 4) == 4
+assert blackjack(3, 2) == 3
+assert blackjack(21, 20) == 21
+
+assert evenlySpaced(2, 4, 6) == True
+assert evenlySpaced(4, 6, 2) == True
+assert evenlySpaced(4, 6, 3) == False
+assert evenlySpaced(6, 2, 4) == True
+assert evenlySpaced(6, 2, 8) == False
+assert evenlySpaced(2, 2, 2) == True
+assert evenlySpaced(2, 2, 3) == False
+assert evenlySpaced(9, 10, 11) == True
+assert evenlySpaced(10, 9, 11) == True
+assert evenlySpaced(10, 9, 9) == False
+assert evenlySpaced(2, 4, 4) == False
+assert evenlySpaced(2, 2, 4) == False
+assert evenlySpaced(3, 6, 12) == False
+assert evenlySpaced(12, 3, 6) == False
 
 assert make_chocolate(4, 1, 9) == 4
 assert make_chocolate(4, 1, 10) == -1
