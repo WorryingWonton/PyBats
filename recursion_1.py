@@ -1,5 +1,5 @@
 def factorial(n):
-    return n*factorial(n - 1) if n > 0 else 1
+    return n * factorial(n - 1) if n > 0 else 1
 
 def bunnyEars(n):
     return 2 + bunnyEars(n - 1) if n > 0 else 0

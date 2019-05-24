@@ -4,7 +4,7 @@ def countYZ(str1):
 def withoutString(base, remove):
     idx = base.lower().find(remove.lower())
     if idx >= 0:
-        return (base[0:idx] if base[0:idx] != ' ' else '') + withoutString(base=base[idx + len(remove):len(base)], remove=remove)
+        return (base[0:idx] if base[0:idx] != ' ' else '') + withoutString(base[idx + len(remove):len(base)], remove)
     else:
         return base
 

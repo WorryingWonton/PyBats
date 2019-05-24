@@ -165,9 +165,7 @@ def fizzBuzz(start, end):
         if not num % 3:
             nums[idx] = 'Fizz'
         if not num % 5:
-            nums[idx] = 'Buzz'
-        if not num % 15:
-            nums[idx] = 'FizzBuzz'
+            nums[idx] = ('Fizz' if not num % 3 else '') + 'Buzz'
     return [str(x) for x in nums]
 
 
