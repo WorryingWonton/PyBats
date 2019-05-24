@@ -95,6 +95,7 @@ def shareDigit(a, b):
 def sumLimit(a, b):
     return a + b if len(str(a)) == len(str(a + b)) else a
 
+
 assert cigar_party(30, False) == False
 assert cigar_party(50, False) == True
 assert cigar_party(70, True) == True
