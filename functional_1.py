@@ -17,7 +17,7 @@ def math1(nums):
     return [(x + 1)*10 for x in nums]
 
 def rightDigit(nums):
-    return [int(str(x)[-1]) for x in nums]
+    return [x % 10 for x in nums]
 
 def lower(strings):
     return [x.lower() for x in strings]
