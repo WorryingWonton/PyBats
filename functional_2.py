@@ -20,10 +20,10 @@ def noYY(strings):
     return list(filter(lambda x: 'yy' not in x, [x + 'y' for x in strings]))
 
 def two2(nums):
-    return list(filter(lambda x: str(x)[-1] != '2', [2 * x for x in nums]))
+    return list(filter(lambda x: x % 10 != 2, [2 * x for x in nums]))
 
 def square56(nums):
-    return list(filter(lambda x: str(x)[-1] not in ['5', '6'], [x ** 2 + 10 for x in nums]))
+    return list(filter(lambda x: x % 10 not in [5, 6], [x ** 2 + 10 for x in nums]))
 
 
 assert noNeg([1, -2]) == [1]
