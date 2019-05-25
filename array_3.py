@@ -1,7 +1,7 @@
 def maxSpan(nums):
     spans = []
     for num in set(nums):
-        spans.append(len(nums) - list(reversed(nums)).index(num) - nums.index(num))
+        spans.append(len(nums) - nums[::-1].index(num) - nums.index(num))
     return max(spans) if spans else 0
 
 def fix34(nums):

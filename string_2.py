@@ -1,5 +1,5 @@
 def double_char(str):
-    return ''.join([2*x for x in str])
+    return ''.join([2 * x for x in str])
 
 def count_hi(str):
     return len(str.split('hi')) - 1

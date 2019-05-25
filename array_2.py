@@ -70,7 +70,7 @@ def either24(nums):
 def matchUp(nums1, nums2):
     count = 0
     for idx, num in enumerate(nums1):
-        if num in [nums2[idx] - 2, nums2[idx] -1, nums2[idx] + 1, nums2[idx] + 2]:
+        if num in [nums2[idx] - 2, nums2[idx] - 1, nums2[idx] + 1, nums2[idx] + 2]:
             count += 1
     return count
 
