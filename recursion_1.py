@@ -108,7 +108,7 @@ def nestParen(str):
     return False
 
 def strCount(str, sub):
-    return 1 + strCount(str[len(sub):], sub) if str[:len(sub)] == sub else strCount(str[1:], sub) if len(str) > 0 else 0
+    return 1 + strCount(str[len(sub):], sub) if str[:len(sub)] == sub else strCount(str[1:], sub) if str else 0
 
 def strCopies(str, sub, n):
     if not str:
