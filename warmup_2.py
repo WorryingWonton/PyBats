@@ -36,13 +36,7 @@ def array123(nums):
     return len([x for x in range(len(nums) - 2) if nums[x:x + 3] == [1, 2, 3]]) > 0
 
 def string_match(a, b):
-    matches = 0
-    short = min(a, b)
-    long = max(a, b)
-    for idx in range(len(short) - 1):
-        if short[idx:idx + 2] == long[idx:idx + 2]:
-            matches += 1
-    return matches
+    return sum([1 for idx, x in enumerate(min(a, b, key=len)[:-1]) if a[idx:idx + 2] == b[idx:idx + 2]])
 
 def stringX(str):
     return ('x' if str[:1] == 'x' else '') + ''.join(str.split('x')) + ('x' if str[-1:] == 'x' and str != 'x' else '')
