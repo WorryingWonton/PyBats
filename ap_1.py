@@ -92,7 +92,7 @@ def mergeTwo(a, b, n):
     return sorted(set(a) | set(b))[:n]
 
 def commonTwo(a, b):
-    return len(set(a) | set(b)) - len(set(a) ^ set(b))
+    return len(set(a) & set(b))
 
 
 assert scoresIncreasing([1, 3, 4]) == True
