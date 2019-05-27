@@ -152,13 +152,7 @@ def evenOdd(nums):
     return [x for x in nums if not x % 2] + [x for x in nums if x % 2]
 
 def fizzBuzz(start, end):
-    nums = list(range(start, end))
-    for idx, num in enumerate(nums):
-        if not num % 3:
-            nums[idx] = 'Fizz'
-        if not num % 5:
-            nums[idx] = ('Fizz' if not num % 3 else '') + 'Buzz'
-    return [str(x) for x in nums]
+    return [('Fizz' * (not x % 3) + 'Buzz' * (not x % 5) or str(x)) for x in range(start, end)]
 
 
 assert count_evens([2, 1, 2, 3, 4]) == 3
