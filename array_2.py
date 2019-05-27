@@ -11,15 +11,7 @@ def sum13(nums):
     return sum([x for idx, x in enumerate(nums) if x != 13 and (idx == 0 or nums[idx - 1] != 13)])
 
 def sum67(nums):
-    index = 0
-    while index < len(nums):
-        if nums[index] == 6:
-            while nums[index] != 7:
-                nums[index] = 0
-                index += 1
-            nums[index] = 0
-        index += 1
-    return sum(nums)
+    return (sum(nums[:nums.index(6)]) + sum67(nums[nums.index(7, nums.index(6)) + 1:])) if 6 in nums else sum(nums)
 
 def has22(nums):
     for idx in range(len(nums)):
@@ -214,10 +206,26 @@ assert sum67([1, 1, 6, 7, 2]) == 4
 assert sum67([1, 6, 2, 2, 7, 1, 6, 99, 99, 7]) == 2
 assert sum67([1, 6, 2, 6, 2, 7, 1, 6, 99, 99, 7]) == 2
 assert sum67([2, 7, 6, 2, 6, 7, 2, 7]) == 18
+assert sum67([7, 6, 7]) == 7
+assert sum67([6, 7, 6, 7]) == 0
+assert sum67([6, 1, 7, 6, 7]) == 0
+assert sum67([6, 1, 7, 6, 2, 7]) == 0
+assert sum67([6, 1, 2, 3, 7, 6, 7]) == 0
+assert sum67([6, 1, 2, 3, 7, 6, 4, 5, 6, 7]) == 0
+assert sum67([6, 1, 2, 3, 7, 6, 4, 5, 6, 7, 8]) == 8
+assert sum67([7, 6, 1, 2, 3, 7, 6, 4, 5, 6, 7, 8]) == 15
+assert sum67([6, 7]) == 0
+assert sum67([7]) == 7
+assert sum67([7, 2, 6, 7]) == 9
+assert sum67([7, 2, 6, 7, 7, 2, 6, 7]) == 18
+assert sum67([7, 2, 6, 7, 2, 6, 7]) == 11
 assert sum67([2, 7, 6, 2, 6, 2, 7]) == 9
 assert sum67([1, 6, 7, 7]) == 8
 assert sum67([6, 7, 1, 6, 7, 7]) == 8
 assert sum67([6, 8, 1, 6, 7]) == 0
+assert sum67([6, 6, 7]) == 0
+assert sum67([6, 6, 6, 6, 7, 7]) == 7
+assert sum67([6, 6, 6, 6, 7, 7, 6, 2, 6, 7]) == 7
 assert sum67([]) == 0
 assert sum67([6, 7, 11]) == 11
 assert sum67([11, 6, 7, 11]) == 22
