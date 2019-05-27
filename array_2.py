@@ -14,10 +14,7 @@ def sum67(nums):
     return (sum(nums[:nums.index(6)]) + sum67(nums[nums.index(7, nums.index(6)) + 1:])) if 6 in nums else sum(nums)
 
 def has22(nums):
-    for idx in range(len(nums)):
-        if nums[idx:idx + 2] == [2, 2]:
-            return True
-    return False
+    return nums[:2] == [2, 2] or (has22(nums[1:]) if nums else False)
 
 def lucky13(nums):
     return 1 not in nums and 3 not in nums
@@ -32,10 +29,7 @@ def fizzArray(n):
     return list(range(n))
 
 def only14(nums):
-    for num in nums:
-        if num not in [1, 4]:
-            return False
-    return True
+    return len([x for x in nums if x in [1, 4]]) == len(nums)
 
 def fizzArray2(n):
     return [str(x) for x in range(n)]
@@ -50,34 +44,16 @@ def isEverywhere(nums, val):
     return True
 
 def either24(nums):
-    found_22 = False
-    found_44 = False
-    for idx in range(len(nums)):
-        if nums[idx:idx + 2] == [2, 2]:
-            found_22 = True
-        if nums[idx:idx + 2] == [4, 4]:
-            found_44 = True
-    return found_22 != found_44
+    return len(set([idx for idx in range(len(nums) - 1) if nums[idx:idx + 2] in [[2, 2], [4, 4]]])) == 1
 
 def matchUp(nums1, nums2):
-    count = 0
-    for idx, num in enumerate(nums1):
-        if num in [nums2[idx] - 2, nums2[idx] - 1, nums2[idx] + 1, nums2[idx] + 2]:
-            count += 1
-    return count
+    return len([1 for idx, x in enumerate(nums1) if nums2[idx] != x and nums2[idx] in range(x - 2, x + 3)])
 
 def has77(nums):
-    has_77 = False
-    for idx in range(len(nums)):
-        if nums[idx] == 7 and (nums[idx + 1:idx + 2] == [7] or nums[idx + 2:idx + 3] == [7]):
-            has_77 = True
-    return has_77
+    return len([1 for idx in range(len(nums)) if nums[idx:idx + 3].count(7) > 1]) > 0
 
 def has12(nums):
-    for idx in range(len(nums) - 1):
-        if nums[idx] == 1 and 2 in nums[idx + 1:]:
-            return True
-    return False
+    return 1 in nums and nums[nums.index(1) + 1:].count(2) > 0
 
 def modThree(nums):
     for idx in range(len(nums) - 2):
@@ -125,10 +101,7 @@ def pre4(nums):
     return nums[:nums.index(4)]
 
 def post4(nums):
-    if 4 not in nums:
-        return nums
-    else:
-        return post4(nums[1:])
+   return nums if 4 not in nums else post4(nums[1:])
 
 def notAlone(nums, val):
     for idx in range(1, len(nums) - 1):
