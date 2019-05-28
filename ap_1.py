@@ -88,6 +88,7 @@ def userCompare(aName, aId, bName, bId):
         return -1 if aId < bId else 1
     return 0
 
+#See https://gist.github.com/WorryingWonton/584196b29ac068c6758bd76e08237463 for liear time approaches for mergeTwo and commonTwo
 def mergeTwo(a, b, n):
     return sorted(set(a) | set(b))[:n]
 
