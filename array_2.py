@@ -39,7 +39,7 @@ def no14(nums):
 
 def isEverywhere(nums, val):
     for idx in range(len(nums) - 1):
-        if nums[idx] != val and nums[idx + 1] != val:
+        if val not in nums[idx:idx + 2]:
             return False
     return True
 
@@ -167,6 +167,23 @@ assert centered_average([4, 4, 4, 4, 5]) == 4
 assert centered_average([4, 4, 4, 1, 5]) == 4
 assert centered_average([6, 4, 8, 12, 3]) == 6
 
+assert sum13([1, 2, 2, 1]) == 6
+assert sum13([1, 1]) == 2
+assert sum13([1, 2, 2, 1, 13]) == 6
+assert sum13([1, 2, 13, 2, 1, 13]) == 4
+assert sum13([13, 1, 2, 13, 2, 1, 13]) == 3
+assert sum13([]) == 0
+assert sum13([13]) == 0
+assert sum13([13, 13]) == 0
+assert sum13([13, 0, 13]) == 0
+assert sum13([13, 1, 13]) == 0
+assert sum13([5, 7, 2]) == 14
+assert sum13([5, 13, 2]) == 5
+assert sum13([0]) == 0
+assert sum13([13, 0]) == 0
+assert sum13([13, 13, 1]) == 0
+assert sum13([2, 13, 13, 1]) == 2
+
 assert sum67([1, 2, 2]) == 5
 assert sum67([1, 2, 2, 6, 99, 99, 7]) == 5
 assert sum67([1, 1, 6, 7, 2]) == 4
@@ -197,23 +214,6 @@ assert sum67([]) == 0
 assert sum67([6, 7, 11]) == 11
 assert sum67([11, 6, 7, 11]) == 22
 assert sum67([2, 2, 6, 7, 7]) == 11
-
-assert sum13([1, 2, 2, 1]) == 6
-assert sum13([1, 1]) == 2
-assert sum13([1, 2, 2, 1, 13]) == 6
-assert sum13([1, 2, 13, 2, 1, 13]) == 4
-assert sum13([13, 1, 2, 13, 2, 1, 13]) == 3
-assert sum13([]) == 0
-assert sum13([13]) == 0
-assert sum13([13, 13]) == 0
-assert sum13([13, 0, 13]) == 0
-assert sum13([13, 1, 13]) == 0
-assert sum13([5, 7, 2]) == 14
-assert sum13([5, 13, 2]) == 5
-assert sum13([0]) == 0
-assert sum13([13, 0]) == 0
-assert sum13([13, 13, 1]) == 0
-assert sum13([2, 13, 13, 1]) == 2
 
 assert has22([1, 2, 2]) == True
 assert has22([1, 2, 1, 2]) == False
