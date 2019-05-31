@@ -28,7 +28,7 @@ def mirrorEnds(my_string):
     return mir_str
 
 def countTriple(my_string):
-    return (1 if (len(my_string) > 2 and (my_string[0:2] == my_string[1:3])) else 0) + countTriple(my_string[1:]) if my_string else 0
+    return (1 if (my_string[0:2] == my_string[1:3]) else 0) + countTriple(my_string[1:]) if my_string else 0
 
 def gHappy(my_string):
     return len([x for x in ''.join(map(lambda x: ' ' if x != 'g' else x, my_string)).split() if len(x) == 1]) == 0
