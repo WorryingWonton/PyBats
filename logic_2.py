@@ -20,10 +20,7 @@ def round_sum_helper(num):
     return num - num % 10 if num % 10 < 5 else num + 10 - num % 10
 
 def close_far(a, b, c):
-    a = abs(a)
-    b = abs(b)
-    c = abs(c)
-    return (abs(a - b) <= 1 and (abs(a - c) >= 2 and abs(b - c) >= 2)) or ((abs(a - b) >= 2 and abs(b - c) >= 2) and abs(a - c) <= 1)
+    return (abs(a - b) < 2 or abs(a - c) < 2) and abs(b - c) > 1 and (abs(a - b) > 1 or abs(a - c) > 1)
 
 def blackjack(a, b):
     return min(a if a < 22 else 0, b if b < 22 else 0, key=lambda x: 21 - x)
