@@ -38,10 +38,7 @@ def no14(nums):
     return ((4 in nums) ^ (1 in nums)) or len(nums) == len([x for x in nums if x not in [1, 4]])
 
 def isEverywhere(nums, val):
-    for idx in range(len(nums) - 1):
-        if val not in nums[idx:idx + 2]:
-            return False
-    return True
+    return not [x for idx, x in enumerate(nums[:-1]) if x != val != nums[idx + 1]]
 
 def either24(nums):
     return len(set([idx for idx in range(len(nums) - 1) if nums[idx:idx + 2] in [[2, 2], [4, 4]]])) == 1
@@ -56,32 +53,19 @@ def has12(nums):
     return 1 in nums and nums[nums.index(1) + 1:].count(2) > 0
 
 def modThree(nums):
-    for idx in range(len(nums) - 2):
-        if nums[idx] % 2 == nums[idx + 1] % 2 == nums[idx + 2] % 2:
-            return True
-    return False
+    return [x for idx, x in enumerate(nums[:-2]) if nums[idx] % 2 == nums[idx + 1] % 2 == nums[idx + 2] % 2] != []
 
 def haveThree(nums):
-    three_count = 0
-    for idx in range(len(nums)):
-        if nums[idx] == 3 and (nums[idx - 1:idx] != [3] and nums[idx + 1:idx + 2] != [3]):
-            three_count += 1
-    return three_count == 3
+    return sum([1 for idx, x in enumerate(nums) if x == 3 and nums[idx - 1:idx] != [3] != nums[idx + 1:idx + 2]]) == 3
 
 def twoTwo(nums):
-    for idx in range(len(nums)):
-        if nums[idx] == 2 and nums[idx + 1:idx + 2] != [2] and nums[idx - 1:idx] != [2]:
-            return False
-    return True
+   return not [x for idx, x in enumerate(nums) if x == 2 and nums[idx + 1:idx + 2] != [2] != nums[idx - 1:idx]]
 
 def sameEnds(nums, length):
     return nums[:length] == nums[len(nums) - length:]
 
 def tripleUp(nums):
-    for idx in range(len(nums) - 2):
-        if nums[idx] == nums[idx + 1] - 1 == nums[idx + 2] - 2:
-            return True
-    return False
+    return [x for idx, x in enumerate(nums[:-2]) if x == nums[idx + 1] - 1 == nums[idx + 2] - 2] != []
 
 def fizzArray3(start, end):
     return list(range(start, end))
@@ -116,9 +100,10 @@ def withoutTen(nums):
     return [x for x in nums if x != 10] + [0 for x in nums if x == 10]
 
 def zeroMax(nums):
-    for idx in range(len(nums)):
-        if nums[idx] == 0:
-            nums[idx] = max([nums[idx]] + [x for x in nums[idx + 1:] if x % 2])
+    biggest_odd = 0
+    for idx, num in enumerate(nums[::-1]):
+        biggest_odd = num if num > biggest_odd and num % 2 else biggest_odd
+        nums[-idx - 1] = biggest_odd if num == 0 else num
     return nums
 
 def evenOdd(nums):
