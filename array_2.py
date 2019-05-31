@@ -75,10 +75,10 @@ def shiftLeft(nums):
 
 def tenRun(nums):
     ten_mult = None
-    for idx in range(len(nums)):
-        if not nums[idx] % 10:
-            ten_mult = nums[idx]
-        nums[idx] = nums[idx] if ten_mult is None else ten_mult
+    for idx, num in enumerate(nums):
+        if not num % 10:
+            ten_mult = num
+        nums[idx] = num if ten_mult is None else ten_mult
     return nums
 
 def pre4(nums):
