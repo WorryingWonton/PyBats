@@ -1,8 +1,5 @@
 def maxSpan(nums):
-    spans = []
-    for num in set(nums):
-        spans.append(len(nums) - nums[::-1].index(num) - nums.index(num))
-    return max(spans) if spans else 0
+    return max([len(nums) - nums[::-1].index(num) - nums.index(num) for num in set(nums)] + [0])
 
 def fix34(nums):
     fours = [x[0] for x in enumerate(nums) if x[1] == 4]
