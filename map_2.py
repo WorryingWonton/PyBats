@@ -29,17 +29,17 @@ def wordMultiple(strings):
     return {x: len([y for y in strings if y == x]) > 1 for x in strings}
 
 def allSwap(strings):
-    first_chars = [x[0] for x in strings]
-    unique = {x: [idx for idx, c in enumerate(first_chars) if c == x] for x in first_chars}
+    unique = {}
     for idx, sub in enumerate(strings):
-        if idx > unique[sub[0]][0] and sub[0] == first_chars[idx]:
-            strings[idx], strings[unique[sub[0]][0]] = strings[unique[sub[0]][0]], sub
-            unique[sub[0]] = unique[sub[0]][2:]
+        if sub[0] in unique and idx > unique[sub[0]]:
+            strings[unique[sub[0]]], strings[idx] = strings[idx], strings[unique[sub[0]]]
+            del unique[sub[0]]
+        else:
+            unique[sub[0]] = idx
     return strings
 
 def firstSwap(strings):
-    first_chars = [x[0] for x in strings]
-    unique = {x: first_chars.index(x) for x in first_chars}
+    unique = {x[0]: strings.index(x) for x in strings[::-1]}
     for idx, sub in enumerate(strings):
         if sub[0] in unique and (idx > unique[sub[0]] and sub[0] == strings[unique[sub[0]]][0]):
             strings[idx], strings[unique[sub[0]]] = strings[unique[sub[0]]], sub
