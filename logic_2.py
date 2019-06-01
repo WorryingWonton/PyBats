@@ -26,7 +26,7 @@ def blackjack(a, b):
     return min(a if a < 22 else 0, b if b < 22 else 0, key=lambda x: 21 - x)
 
 def evenlySpaced(a, b, c):
-    return (min(a, b, c) + max(a, b, c)) / 2 in (a, b, c)
+    return (a + b + c) / 3 in (a, b, c)
 
 def make_chocolate(small, big, goal):
     return (goal - 5 * big if 5 * big <= goal else goal % 5) if (goal % 5 <= small and goal - 5 * big <= small) else -1
