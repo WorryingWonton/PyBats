@@ -39,7 +39,7 @@ def allSwap(strings):
     return strings
 
 def firstSwap(strings):
-    unique = {x[0]: strings.index(x) for x in strings[::-1]}
+    unique = {x[0]: idx for idx, x in list(enumerate(strings))[::-1]}
     for idx, sub in enumerate(strings):
         if sub[0] in unique and (idx > unique[sub[0]] and sub[0] == strings[unique[sub[0]]][0]):
             strings[idx], strings[unique[sub[0]]] = strings[unique[sub[0]]], sub
