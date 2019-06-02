@@ -2,7 +2,7 @@ def first_last6(nums):
     return nums[-1] == 6 or nums[0] == 6
 
 def same_first_last(nums):
-    return nums[:1] == nums[-1:] and len(nums) > 0
+    return len(nums) > 0 and nums[0] == nums[-1]
 
 def make_pi():
     return [3, 1, 4]
