@@ -57,10 +57,7 @@ def sameStarChar(str):
     return True
 
 def oneTwo(str):
-    new_str = ''
-    for idx in range(0, len(str) - 2, 3):
-        new_str += str[idx + 1:idx + 3] + str[idx]
-    return new_str
+    return ''.join([str[idx + 1:idx + 3] + str[idx] for idx in range(0, len(str) - 2, 3)])
 
 def zipZap(str):
     return ''.join([x for idx, x in enumerate(str) if str[idx - 1:idx + 2] != f'z{x}p'])
