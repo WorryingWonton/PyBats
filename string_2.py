@@ -63,20 +63,10 @@ def oneTwo(str):
     return new_str
 
 def zipZap(str):
-    new_str = ''
-    for idx in range(len(str)):
-        if [str[idx - 1:idx], str[idx + 1:idx + 2]] == ['z', 'p']:
-            continue
-        new_str += str[idx]
-    return new_str
+    return ''.join([x for idx, x in enumerate(str) if str[idx - 1:idx + 2] != f'z{x}p'])
 
 def starOut(str):
-    new_str = ''
-    for idx in range(len(str)):
-        if '*' in [str[idx - 1:idx], str[idx], str[idx + 1:idx + 2]]:
-            continue
-        new_str += str[idx]
-    return new_str
+    return ''.join([x for idx, x in enumerate(str) if '*' not in [str[idx - 1:idx], x, str[idx + 1:idx + 2]]])
 
 def plusOut(str, word):
     return word.join(['+' * len(x) for x in str.split(word)])
