@@ -50,7 +50,7 @@ def sameEnds(my_string):
             new_s += rh[0]
             lh = lh[1:]
         rh = rh[1:]
-    return new_s if new_s and new_s[0] == my_string[0] else ''
+    return new_s
 
 def maxBlock(my_string):
     max_len = 0
