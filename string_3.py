@@ -8,33 +8,14 @@ def withoutString(base, remove):
     else:
         return base
 
-def notReplace(str1):
-    idx = 0
-    while idx < len(str1) - 1:
-        if str1[idx:idx + 2] == 'is' and (len(str1) == 2 or (((idx == 0 and not str1[idx + 2].isalpha()) or (idx == len(str1) - 2 and not str1[idx - 1].isalpha())) or (not str1[idx - 1].isalpha() and not str1[idx + 2].isalpha()))):
-            str1 = str1[:idx + 2] + ' not' + str1[idx + 2:]
-            idx += 6
-        else:
-            idx += 1
-    return str1
-
-def mirrorEnds(my_string):
-    mir_str = ''
-    for idx in range(len(my_string)):
-        if my_string[idx] == my_string[-idx - 1]:
-            mir_str += my_string[idx]
-        else:
-            break
-    return mir_str
-
-def countTriple(my_string):
-    return (1 if (my_string[:2] == my_string[1:3]) else 0) + countTriple(my_string[1:]) if my_string else 0
+def equalIsNot(my_string):
+    return len(my_string.split('is')) == len(my_string.split('not'))
 
 def gHappy(my_string):
     return not [x for x in ''.join(map(lambda x: ' ' if x != 'g' else x, my_string)).split() if len(x) == 1]
 
-def equalIsNot(my_string):
-    return len(my_string.split('is')) == len(my_string.split('not'))
+def countTriple(my_string):
+    return (1 if (my_string[:2] == my_string[1:3]) else 0) + countTriple(my_string[1:]) if my_string else 0
 
 def sumDigits(my_string):
     return sum(map(lambda x: int(x), filter(lambda x: x.isdigit(), my_string)))
@@ -52,6 +33,15 @@ def sameEnds(my_string):
         rh = rh[1:]
     return new_s
 
+def mirrorEnds(my_string):
+    mir_str = ''
+    for idx in range(len(my_string)):
+        if my_string[idx] == my_string[-idx - 1]:
+            mir_str += my_string[idx]
+        else:
+            break
+    return mir_str
+
 def maxBlock(my_string):
     max_len = 0
     count = 1
@@ -65,6 +55,16 @@ def maxBlock(my_string):
 
 def sumNumbers(my_string):
     return sum([int(x) for x in ''.join(map(lambda x: ' ' if not x.isdigit() else x, my_string)).split(' ') if x])
+
+def notReplace(str1):
+    idx = 0
+    while idx < len(str1) - 1:
+        if str1[idx:idx + 2] == 'is' and not (str1[idx - 1:idx].isalpha() or str1[idx + 2:idx + 3].isalpha()):
+            str1 = str1[:idx + 2] + ' not' + str1[idx + 2:]
+            idx += 6
+        else:
+            idx += 1
+    return str1
 
 
 assert countYZ("fez day") == 2
@@ -103,18 +103,6 @@ assert withoutString(" Hi there Bill!", " ") == "HithereBill!"
 assert withoutString(" Hi there Bill!", " ") == "HithereBill!"
 assert withoutString("Hi there Bill! ", " ") == "HithereBill!"
 
-assert notReplace("is test") == "is not test"
-assert notReplace("is-is") == "is not-is not"
-assert notReplace("This is right") == "This is not right"
-assert notReplace("This is isabell") == "This is not isabell"
-assert notReplace("") == ""
-assert notReplace("is") == "is not"
-assert notReplace("isis") == "isis"
-assert notReplace("Dis is bliss is") == "Dis is not bliss is not"
-assert notReplace("is his") == "is not his"
-assert notReplace("xis yis") == "xis yis"
-assert notReplace("AAAis is") == "AAAis is not"
-
 assert equalIsNot("This is not") == False
 assert equalIsNot("This is notnot") == True
 assert equalIsNot("noisxxnotyynotxisi") == True
@@ -125,31 +113,6 @@ assert equalIsNot("isisnotnot") == True
 assert equalIsNot("isisnotno7Not") == False
 assert equalIsNot("isnotis") == False
 assert equalIsNot("mis3notpotbotis") == False
-
-assert mirrorEnds("abXYZba") == "ab"
-assert mirrorEnds("abca") == "a"
-assert mirrorEnds("aba") == "aba"
-assert mirrorEnds("abab") == ""
-assert mirrorEnds("xxx") == "xxx"
-assert mirrorEnds("xxYxx") == "xxYxx"
-assert mirrorEnds("Hi and iH") == "Hi "
-assert mirrorEnds("x") == "x"
-assert mirrorEnds("") == ""
-assert mirrorEnds("123and then 321") == "123"
-assert mirrorEnds("band andab") == "ba"
-
-assert countTriple("abcXXXabc") == 1
-assert countTriple("xxxabyyyycd") == 3
-assert countTriple("a") == 0
-assert countTriple("") == 0
-assert countTriple("XXXabc") == 1
-assert countTriple("XXXXabc") == 2
-assert countTriple("XXXXXabc") == 3
-assert countTriple("222abyyycdXXX") == 3
-assert countTriple("abYYYabXXXXXab") == 4
-assert countTriple("abYYXabXXYXXab") == 0
-assert countTriple("abYYXabXXYXXab") == 0
-assert countTriple("122abhhh2") == 1
 
 assert gHappy("xxggxx") == True
 assert gHappy("xxgxx") == False
@@ -163,6 +126,19 @@ assert gHappy("xxgggxygg") == True
 assert gHappy("mgm") == False
 assert gHappy("mggm") == True
 assert gHappy("yyygggxyy") == True
+
+assert countTriple("abcXXXabc") == 1
+assert countTriple("xxxabyyyycd") == 3
+assert countTriple("a") == 0
+assert countTriple("") == 0
+assert countTriple("XXXabc") == 1
+assert countTriple("XXXXabc") == 2
+assert countTriple("XXXXXabc") == 3
+assert countTriple("222abyyycdXXX") == 3
+assert countTriple("abYYYabXXXXXab") == 4
+assert countTriple("abYYXabXXYXXab") == 0
+assert countTriple("abYYXabXXYXXab") == 0
+assert countTriple("122abhhh2") == 1
 
 assert sumDigits("aa1bc2d3") == 6
 assert sumDigits("aa11b33") == 8
@@ -187,6 +163,18 @@ assert sameEnds("") == ""
 assert sameEnds("abcb") == ""
 assert sameEnds("mymmy") == "my"
 
+assert mirrorEnds("abXYZba") == "ab"
+assert mirrorEnds("abca") == "a"
+assert mirrorEnds("aba") == "aba"
+assert mirrorEnds("abab") == ""
+assert mirrorEnds("xxx") == "xxx"
+assert mirrorEnds("xxYxx") == "xxYxx"
+assert mirrorEnds("Hi and iH") == "Hi "
+assert mirrorEnds("x") == "x"
+assert mirrorEnds("") == ""
+assert mirrorEnds("123and then 321") == "123"
+assert mirrorEnds("band andab") == "ba"
+
 assert maxBlock("hoopla") == 2
 assert maxBlock("abbCCCddBBBxx") == 3
 assert maxBlock("") == 0
@@ -208,3 +196,17 @@ assert sumNumbers("5$$1;;1!!") == 7
 assert sumNumbers("a1234bb11") == 1245
 assert sumNumbers("") == 0
 assert sumNumbers("a22bbb3") == 25
+
+assert notReplace("is test") == "is not test"
+assert notReplace("is-is") == "is not-is not"
+assert notReplace("This is right") == "This is not right"
+assert notReplace("This is isabell") == "This is not isabell"
+assert notReplace("") == ""
+assert notReplace("is") == "is not"
+assert notReplace("isis") == "isis"
+assert notReplace("Dis is bliss is") == "Dis is not bliss is not"
+assert notReplace("is his") == "is not his"
+assert notReplace("xis yis") == "xis yis"
+assert notReplace("AAAis is") == "AAAis is not"
+assert notReplace("AAAis 3is") == "AAAis 3is not"
+assert notReplace("AAAis 3is3") == "AAAis 3is not3"
