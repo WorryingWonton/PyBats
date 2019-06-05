@@ -31,7 +31,7 @@ def countTriple(my_string):
     return (1 if (my_string[:2] == my_string[1:3]) else 0) + countTriple(my_string[1:]) if my_string else 0
 
 def gHappy(my_string):
-    return len([x for x in ''.join(map(lambda x: ' ' if x != 'g' else x, my_string)).split() if len(x) == 1]) == 0
+    return not [x for x in ''.join(map(lambda x: ' ' if x != 'g' else x, my_string)).split() if len(x) == 1]
 
 def equalIsNot(my_string):
     return len(my_string.split('is')) == len(my_string.split('not'))
