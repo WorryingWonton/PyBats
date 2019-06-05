@@ -64,15 +64,7 @@ def maxBlock(my_string):
     return max_len
 
 def sumNumbers(my_string):
-    nums = []
-    substr = ''
-    for elem in my_string:
-        if elem.isdigit():
-            substr += elem
-        else:
-            nums.append(int(substr)) if substr else 0
-            substr = ''
-    return sum(nums + ([int(substr)] if substr else [0]))
+    return sum([int(x) for x in ''.join(map(lambda x: ' ' if not x.isdigit() else x, my_string)).split(' ') if x])
 
 
 assert countYZ("fez day") == 2
