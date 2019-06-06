@@ -33,10 +33,9 @@ def canBalance(nums):
     return False
 
 def linearIn(inner, outer):
-    return not linearIn_helper(inner, outer)
-
-def linearIn_helper(inner, outer):
-    return (linearIn_helper(inner[1:], outer) if inner[0] != outer[0] else linearIn_helper(inner[1:], outer[1:])) if inner and outer else outer
+    if not inner or not outer:
+        return not outer
+    return linearIn(inner[1:], outer) if inner[0] != outer[0] else linearIn(inner[1:], outer[1:])
 
 def squareUp(num):
     return sum([y[:num - x] + list(range(x, 0, -1)) for x, y in enumerate([[0]*num]*num, start=1)], [])
