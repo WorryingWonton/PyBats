@@ -33,7 +33,7 @@ def canBalance(nums):
     return False
 
 def linearIn(inner, outer):
-    if not inner or not outer:
+    if not (inner and outer):
         return not outer
     return linearIn(inner[1:], outer) if inner[0] != outer[0] else linearIn(inner[1:], outer[1:])
 
