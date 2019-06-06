@@ -62,7 +62,7 @@ def noTriples(nums):
     return not sum([1 for idx, x in enumerate(nums[:-2]) if nums[idx:idx + 3] == [x] * 3])
 
 def has271(nums):
-    return sum([1 for i, x in enumerate(nums[:-2]) if x == nums[i + 1] - 5 and nums[i + 2] in range(x - 3, x + 2)]) > 0
+    return sum([1 for i, x in enumerate(nums[:-2]) if x == nums[i + 1] - 5 and x - 4 < nums[i + 2] < x + 2]) > 0
 
 
 assert string_times('Hi', 2) == 'HiHi'
