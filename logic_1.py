@@ -15,9 +15,7 @@ def sorta_sum(a, b):
     return a + b if a + b not in range(10, 20) else 20
 
 def alarm_clock(day, vacation):
-    if not vacation:
-        return '10:00' if day in [6, 0] else '7:00'
-    return '10:00' if day in range(1, 6) else 'off'
+    return ('10:00' if day in [6, 0] else '7:00') if not vacation else ('10:00' if day in range(1, 6) else 'off')
 
 def love6(a, b):
     return 6 in [a, b] or a + b == 6 or abs(a - b) == 6
@@ -90,7 +88,9 @@ def blueTicket(a, b, c):
     return 10 if a + b == 10 or b + c == 10 or c + a == 10 else 5 if a - c == 10 or b - c == 10 else 0
 
 def shareDigit(a, b):
-    return a % 10 == b % 10 or int(a / 10) % 10 == int(b / 10) % 10 or int(a / 10) % 10 == b % 10 or int(b / 10) % 10 == a % 10
+    al = int(a / 10) % 10
+    bl = int(b / 10) % 10
+    return a % 10 == b % 10 or al == bl or al == b % 10 or bl == a % 10
 
 def sumLimit(a, b):
     return a + b if len(str(a)) == len(str(a + b)) else a
