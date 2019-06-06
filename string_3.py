@@ -1,5 +1,5 @@
 def countYZ(str1):
-    return len(list(filter(lambda x: x[-1] in 'yz', [x for x in ''.join(map(lambda x: ' ' if not x.isalpha() else x, str1.lower())).split(' ') if x])))
+    return sum([1 for idx, x in enumerate(str1.lower()) if x in 'yz' and not str1[idx + 1:idx + 2].isalpha()])
 
 def withoutString(base, remove):
     idx = base.lower().find(remove.lower())
@@ -78,6 +78,7 @@ assert countYZ("DAY abc XYZ") == 2
 assert countYZ("aaz yyz my") == 3
 assert countYZ("y2bz") == 2
 assert countYZ("zxyx") == 0
+assert countYZ("") == 0
 
 assert withoutString("Hello there", "llo") == "He there"
 assert withoutString("Hello there", "e") == "Hllo thr"
