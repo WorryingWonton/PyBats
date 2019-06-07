@@ -67,9 +67,7 @@ def endX(str):
     return endX(str[1:]) + 'x' if str[:1] == 'x' else (str[0] + endX(str[1:]) if str else '')
 
 def countPairs(str):
-    if len(str) < 3:
-        return 0
-    return 1 + countPairs(str[1:]) if str[0] == str[2] else countPairs(str[1:])
+    return (1 + countPairs(str[1:]) if str[0] == str[2] else countPairs(str[1:])) if len(str) > 2 else 0
 
 def countAbc(str):
     return 1 + countAbc(str[2:]) if str[:3] in ['abc', 'aba'] else countAbc(str[1:]) if len(str) > 2 else 0
@@ -78,9 +76,7 @@ def count11(str):
     return 1 + count11(str[2:]) if str[:2] == '11' else count11(str[1:]) if len(str) > 2 else 0
 
 def stringClean(str):
-    if len(str) == 1:
-        return str
-    return stringClean(str[1:]) if str[0] == str[1] else str[0] + stringClean(str[1:])
+    return (stringClean(str[1:]) if str[0] == str[1] else str[0] + stringClean(str[1:])) if len(str) > 1 else str
 
 def countHi2(str):
     if not str:
@@ -101,24 +97,16 @@ def parenBit(str):
     return parenBit(str[1:-1])
 
 def nestParen(str):
-    if not str:
-        return True
-    if str[0] + str[-1] == '()':
-        return nestParen(str[1:-1])
-    return False
+    return nestParen(str[1:-1]) if str[:1] + str[-1:] == '()' else not str
 
 def strCount(str, sub):
     return 1 + strCount(str[len(sub):], sub) if str[:len(sub)] == sub else strCount(str[1:], sub) if str else 0
 
 def strCopies(str, sub, n):
-    if not str:
-        return n == 0
-    if str[:len(sub)] == sub:
-        return strCopies(str[1:], sub, n - 1)
-    return strCopies(str[1:], sub, n)
+    return (strCopies(str[1:], sub, n - 1) if str[:len(sub)] == sub else strCopies(str[1:], sub, n)) if str else n == 0
 
 def strDist(str, sub):
-    if str[:len(sub)] == sub and str[-len(sub):] == sub:
+    if str[:len(sub)] == sub == str[-len(sub):]:
         return len(str)
     if str[:len(sub)] == sub:
         return strDist(str[:-1], sub)
