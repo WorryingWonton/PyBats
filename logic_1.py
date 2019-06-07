@@ -2,7 +2,7 @@ def cigar_party(cigars, is_weekend):
     return cigars in range(40, 61) if not is_weekend else cigars > 39
 
 def date_fashion(you, date):
-    return 2 if max(you, date) > 7 and min(you, date) > 2 else 1 if min(you, date) > 2 else 0
+    return 2 if max(you, date) > 7 and min(you, date) > 2 else (1 if min(you, date) > 2 else 0)
 
 def squirrel_play(temp, is_summer):
     return temp in range(60, 91) if not is_summer else temp in range(60, 101)
@@ -45,15 +45,13 @@ def answerCell(isMorning, isMom, isAsleep):
     return not isAsleep and (isMom or not isMorning)
 
 def teaParty(tea, candy):
-    return 0 if tea < 5 or candy < 5 else 2 if tea >= 2 * candy or candy >= 2 * tea else 1
+    return 0 if tea < 5 or candy < 5 else (2 if tea >= 2 * candy or candy >= 2 * tea else 1)
 
 def fizzString(str):
-    if str[0:1] != 'f' and str[-1:] != 'b':
-        return str
-    return ('Fizz' if str[0:1] == 'f' else '') + ('Buzz' if str[-1:] == 'b' else '')
+    return (('Fizz' if str[0:1] == 'f' else '') + ('Buzz' if str[-1:] == 'b' else '')) or str
 
 def fizzString2(n):
-    return ('Fizz' if not n % 3 else '') + ('Buzz' if not n % 5 else '') + (f'{n}!' if (n % 3 and n % 5) else '!')
+    return (('Fizz' * (not n % 3) + 'Buzz' * (not n % 5)) or str(n)) + '!'
 
 def twoAsOne(a, b, c):
     return a + b == c or a + c == b or b + c == a
@@ -71,15 +69,13 @@ def lessBy10(a, b, c):
     return abs(a - b) > 9 or abs(b - c) > 9 or abs(a - c) > 9
 
 def withoutDoubles(die1, die2, noDoubles):
-    if not noDoubles or die1 != die2:
-        return die1 + die2
-    return (1 if die1 == 6 and die1 == die2 else die1 + 1) + die2
+    return ((1 if die1 == 6 and die1 == die2 else die1 + 1) + die2) if (noDoubles and die1 == die2) else die1 + die2
 
 def maxMod5(a, b):
     return (max(a, b) if a % 5 != b % 5 else min(a, b)) if a != b else 0
 
 def redTicket(a, b, c):
-    return 10 if a == b == c == 2 else (5 if a == b == c else 1 if a != b and a != c else 0)
+    return 10 if a == b == c == 2 else (5 if a == b == c else (1 if a != b and a != c else 0))
 
 def greenTicket(a, b, c):
     return 20 if a == b == c else 10 if a == b or b == c or a == c else 0
