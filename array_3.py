@@ -5,16 +5,14 @@ def fix34(nums):
     fours = [x[0] for x in enumerate(nums) if x[1] == 4]
     for idx in range(len(nums)):
         if nums[idx] == 3:
-            nums[fours[0]] = nums[idx + 1]
+            nums[fours[0]], nums[idx + 1] = nums[idx + 1], 4
             fours = fours[1:]
-            nums[idx + 1] = 4
     return nums
 
 def fix45(nums):
     for idx, val in enumerate(nums):
         if val == 4:
-            temp = nums[idx + 1]
-            nums[idx + 1] = 5
+            temp, nums[idx + 1] = nums[idx + 1], 5
             for i in range(len(nums)):
                 if nums[i] == 5 and nums[i - 1] != 4:
                     nums[i] = temp
