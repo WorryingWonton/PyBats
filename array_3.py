@@ -39,7 +39,7 @@ def squareUp(num):
     return sum([y[:num - x] + list(range(x, 0, -1)) for x, y in enumerate([[0]*num]*num, start=1)], [])
 
 def seriesUp(num):
-    return sum([list(range(1, x[0] + 2)) for x in enumerate([[]]*num)], [])
+    return sum([list(range(1, x[0] + 2)) for x in enumerate(range(num))], [])
 
 def maxMirror(nums):
     max_size = 0
