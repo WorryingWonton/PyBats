@@ -20,11 +20,7 @@ def string_splosion(str):
     return ''.join([str[:idx] for idx in range(len(str) + 1)])
 
 def last2(str):
-    count = 0
-    for idx in range(len(str[:-2])):
-        if str[idx:idx + 2] == str[-2:]:
-            count += 1
-    return count
+    return sum([1 for x in enumerate(str[:-2]) if str[x[0]:x[0] + 2] == str[-2:]])
 
 def array_count9(nums):
     return len([x for x in nums if x == 9])
